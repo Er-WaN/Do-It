@@ -1,0 +1,37 @@
+
+entity Task {
+	taskId Long,
+	name String,
+    description String,
+    creationDate LocalDate,
+    finishedDate LocalDate,
+    user User,
+    state TaskState,
+    difficulty TaskDifficulty,
+    taskTime TaskTime,
+}
+
+
+enum TaskDifficulty {
+	EASY,
+    MEDIUM,
+    HARD
+}
+
+enum TaskState {
+	CREATED,
+    PENDING,
+    TODO,
+    DOING,
+    DONE
+}
+
+enum TaskTime {
+	QUICK,
+    MEDIUM,
+    LONG
+}
+
+
+
+	
