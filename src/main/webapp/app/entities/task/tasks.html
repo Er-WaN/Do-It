@@ -1,0 +1,76 @@
+<div>
+    <h2 translate="doItApp.task.home.title">Tasks</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="task.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="doItApp.task.home.createLabel">
+                        Create new Task
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="doItApp.task.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="doItApp.task.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationDate"><span translate="doItApp.task.creationDate">Creation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="finishedDate"><span translate="doItApp.task.finishedDate">Finished Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="state"><span translate="doItApp.task.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="difficulty"><span translate="doItApp.task.difficulty">Difficulty</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="taskTime"><span translate="doItApp.task.taskTime">Task Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id"><span translate="doItApp.task.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in vm.tasks track by task.id">
+                    <td><a ui-sref="task-detail({id:task.id})">{{task.id}}</a></td>
+                    <td>{{task.name}}</td>
+                    <td>{{task.description}}</td>
+                        <td>{{task.creationDate | date:'mediumDate'}}</td>
+                        <td>{{task.finishedDate | date:'mediumDate'}}</td>
+                    <td translate="{{'doItApp.TaskState.' + task.state}}">{{task.state}}</td>
+                    <td translate="{{'doItApp.TaskDifficulty.' + task.difficulty}}">{{task.difficulty}}</td>
+                    <td translate="{{'doItApp.TaskTime.' + task.taskTime}}">{{task.taskTime}}</td>
+                    <td>
+                        {{task.user.id}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="task-detail({id:task.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="task.edit({id:task.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="task.delete({id:task.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

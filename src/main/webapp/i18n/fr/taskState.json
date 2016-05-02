@@ -1,0 +1,12 @@
+{
+    "doItApp": {
+        "TaskState" : {
+            "null": "",
+            "CREATED": "CREATED",
+            "PENDING": "PENDING",
+            "TODO": "TODO",
+            "DOING": "DOING",
+            "DONE": "DONE"
+        }
+    }
+}

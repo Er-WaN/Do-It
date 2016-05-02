@@ -1,14 +1,15 @@
+entity User{
+}
+
 
 entity Task {
-	taskId Long,
 	name String,
     description String,
     creationDate LocalDate,
     finishedDate LocalDate,
-    user User,
     state TaskState,
     difficulty TaskDifficulty,
-    taskTime TaskTime,
+    taskTime TaskTime
 }
 
 
@@ -32,6 +33,12 @@ enum TaskTime {
     LONG
 }
 
+relationship OneToOne{
+    Task{user} to User{tasks}
+}
 
+paginate all with pagination
+
+service all with serviceImpl
 
 	

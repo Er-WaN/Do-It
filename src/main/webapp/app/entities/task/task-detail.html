@@ -1,0 +1,53 @@
+
+<div>
+    <h2><span translate="doItApp.task.detail.title">Task</span> {{vm.task.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="doItApp.task.name">Name</span></dt>
+        <dd>
+            <span>{{vm.task.name}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="doItApp.task.description">Description</span></dt>
+        <dd>
+            <span>{{vm.task.description}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="doItApp.task.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{vm.task.creationDate | date:'mediumDate'}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="doItApp.task.finishedDate">Finished Date</span></dt>
+        <dd>
+            <span>{{vm.task.finishedDate | date:'mediumDate'}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="doItApp.task.state">State</span></dt>
+        <dd>
+            <span translate="{{'doItApp.TaskState.' + vm.task.state}}">{{vm.task.state}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="doItApp.task.difficulty">Difficulty</span></dt>
+        <dd>
+            <span translate="{{'doItApp.TaskDifficulty.' + vm.task.difficulty}}">{{vm.task.difficulty}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="doItApp.task.taskTime">Task Time</span></dt>
+        <dd>
+            <span translate="{{'doItApp.TaskTime.' + vm.task.taskTime}}">{{vm.task.taskTime}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="doItApp.task.user">User</span></dt>
+        <dd>
+            {{vm.task.user.id}}
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,49 +1,50 @@
 {
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-one",
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "tasks"
+    }
+  ],
   "fields": [
     {
       "fieldId": 1,
-      "fieldName": "taskId",
-      "fieldType": "Long"
-    },
-    {
-      "fieldId": 2,
       "fieldName": "name",
       "fieldType": "String"
     },
     {
-      "fieldId": 3,
+      "fieldId": 2,
       "fieldName": "description",
       "fieldType": "String"
     },
     {
-      "fieldId": 4,
+      "fieldId": 3,
       "fieldName": "creationDate",
       "fieldType": "LocalDate"
     },
     {
-      "fieldId": 5,
+      "fieldId": 4,
       "fieldName": "finishedDate",
       "fieldType": "LocalDate"
     },
     {
-      "fieldId": 6,
-      "fieldName": "user"
-    },
-    {
-      "fieldId": 7,
+      "fieldId": 5,
       "fieldName": "state",
       "fieldType": "TaskState",
       "fieldValues": "CREATED,PENDING,TODO,DOING,DONE"
     },
     {
-      "fieldId": 8,
+      "fieldId": 6,
       "fieldName": "difficulty",
       "fieldType": "TaskDifficulty",
       "fieldValues": "EASY,MEDIUM,HARD"
     },
     {
-      "fieldId": 9,
+      "fieldId": 7,
       "fieldName": "taskTime",
       "fieldType": "TaskTime",
       "fieldValues": "QUICK,MEDIUM,LONG"
@@ -51,7 +52,7 @@
   ],
   "changelogDate": "20160502195038",
   "dto": "no",
-  "pagination": "no",
-  "service": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
   "entityTableName": "task"
 }

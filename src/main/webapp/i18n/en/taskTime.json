@@ -1,0 +1,10 @@
+{
+    "doItApp": {
+        "TaskTime" : {
+            "null": "",
+            "QUICK": "QUICK",
+            "MEDIUM": "MEDIUM",
+            "LONG": "LONG"
+        }
+    }
+}

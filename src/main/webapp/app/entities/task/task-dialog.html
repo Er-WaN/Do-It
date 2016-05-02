@@ -1,0 +1,90 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTaskLabel" translate="doItApp.task.home.createOrEditLabel">Create or edit a Task</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.task.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.task.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="doItApp.task.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.task.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="doItApp.task.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.task.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="doItApp.task.creationDate" for="field_creationDate">Creation Date</label>
+                <div class="input-group">
+                    <input id="field_creationDate" type="text" class="form-control" name="creationDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.task.creationDate" is-open="vm.datePickerOpenStatus.creationDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('creationDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="doItApp.task.finishedDate" for="field_finishedDate">Finished Date</label>
+                <div class="input-group">
+                    <input id="field_finishedDate" type="text" class="form-control" name="finishedDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.task.finishedDate" is-open="vm.datePickerOpenStatus.finishedDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('finishedDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="doItApp.task.state" for="field_state">State</label>
+            <select class="form-control" name="state" ng-model="vm.task.state" id="field_state">
+                <option value="CREATED" translate="doItApp.TaskState.CREATED">CREATED</option>
+                <option value="PENDING" translate="doItApp.TaskState.PENDING">PENDING</option>
+                <option value="TODO" translate="doItApp.TaskState.TODO">TODO</option>
+                <option value="DOING" translate="doItApp.TaskState.DOING">DOING</option>
+                <option value="DONE" translate="doItApp.TaskState.DONE">DONE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="doItApp.task.difficulty" for="field_difficulty">Difficulty</label>
+            <select class="form-control" name="difficulty" ng-model="vm.task.difficulty" id="field_difficulty">
+                <option value="EASY" translate="doItApp.TaskDifficulty.EASY">EASY</option>
+                <option value="MEDIUM" translate="doItApp.TaskDifficulty.MEDIUM">MEDIUM</option>
+                <option value="HARD" translate="doItApp.TaskDifficulty.HARD">HARD</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="doItApp.task.taskTime" for="field_taskTime">Task Time</label>
+            <select class="form-control" name="taskTime" ng-model="vm.task.taskTime" id="field_taskTime">
+                <option value="QUICK" translate="doItApp.TaskTime.QUICK">QUICK</option>
+                <option value="MEDIUM" translate="doItApp.TaskTime.MEDIUM">MEDIUM</option>
+                <option value="LONG" translate="doItApp.TaskTime.LONG">LONG</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label translate="doItApp.task.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.task.user" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
